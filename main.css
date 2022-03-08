@@ -37,14 +37,14 @@ div{
     text-align: center;
 }
 
-label{
+label {
     border: 2px solid #345;
     padding: 5px;
     text-align: center;
     border-radius: 10px;
 }
 
-input{
+input, textarea{
     padding: 4px;
     width: 80vw;
     height: 20px;
@@ -80,6 +80,10 @@ input{
     background: #fff;
 }
 
+textarea {
+    height: 75px;
+}
+
 footer {
     background: #101515;
     padding: 20px;
@@ -87,4 +91,9 @@ footer {
     text-align: center;
     margin-top: 30px;
     width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
 }
