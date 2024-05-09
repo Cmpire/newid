@@ -1,0 +1,59 @@
+<!--Further steps: A basic “Contact us” page
+OK, how about making this a bit more like a “Contact us” form? We can add sender name and sender email address to the message and also include a confirmation message, to let the sender know their message has been sent. Here’s the whole shebang: -->
+<?php
+
+if($_POST["submit"]) {
+    $recipient="your@email.address";
+    $subject="Form to email message";
+    $sender=$_POST["sender"];
+    $senderEmail=$_POST["senderEmail"];
+    $message=$_POST["message"];
+
+    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
+
+    mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
+
+    $thankYou="<p>Thank you! Your message has been sent.</p>";
+}
+
+?>
+<?=$thankYou ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Contact form to email</title>
+</head>
+
+<body>
+
+    
+
+    <form method="post" action="contact.php">
+        <label>Name:</label>
+        <input name="sender">
+
+        <label>Email address:</label>
+        <input name="senderEmail">
+
+        <label>Message:</label>
+        <textarea rows="5" cols="20" name="message"></textarea>
+
+        <input type="submit" name="submit">
+    </form>
+
+</body>
+
+</html>
+This time we’re:
+	•			Checking the form has been sent (this time by looking for the form field named “submit”) and, if it has…
+	•			Setting a bag-load of variables:
+	•			Your email address
+	•			The email subject
+	•			The sender’s name (taken from the form)
+	•			The sender’s email address (taken from the form)
+	•			The message (taken from the form)
+	•			Sending the email, using all of those variables
+	•			Setting a variable for a confirmation message
+	•			Loading the HTML, including the confirmation message
+If the page loads and no form data has been sent then no email will be composed and no conformation message will be set so all that will happen is loading of the page’s HTML.
